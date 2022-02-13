@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Lista de Tarefas</string>
+    <string name="txt_title">Tarefas</string>
+    <string name="descri_o_da_tarefa">Descrição da Tarefa</string>
+    <string name="t_tulo_da_tarefa">Título da Tarefa</string>
+    <string name="txt_data">Data</string>
+    <string name="txt_hora">Hora</string>
+    <string name="txt_criar_tarefa">Criar Tarefa</string>
+    <string name="txt_cancel">Cancelar</string>
+    <string name="txt_nova_tarefa">Nova tarefa</string>
+    <string name="txt_exemp">Passear com o cchorro</string>
+    <string name="txt_exemp_hora">01/01/2022 18:00</string>
+</resources>
