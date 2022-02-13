@@ -1,7 +1,7 @@
 package com.example.todolist.ui
 
+import android.app.Activity
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.todolist.databinding.ActivityAddTaskBinding
 import com.example.todolist.datasource.TaskDataSource
@@ -21,6 +21,16 @@ class AddTaskActivity: AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityAddTaskBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        if (intent.hasExtra(TASK_ID)){
+            val taskId = intent.getIntExtra(TASK_ID, 0)
+            TaskDataSource.findById(taskId)?.let {
+                binding.tilTarefas.text = it.title
+                binding.tilDescricao.text = it.description
+                binding.tilDate.text = it.date
+                binding.tilHour.text = it.hour
+            }
+        }
 
         insertLiestners()
     }
@@ -62,12 +72,18 @@ class AddTaskActivity: AppCompatActivity() {
                 title = binding.tilTarefas.text,
                 description = binding.tilDescricao.text,
                 date = binding.tilDate.text,
-                hour = binding.tilHour.text
+                hour = binding.tilHour.text,
+                id = intent.getIntExtra(TASK_ID, 0)
             )
             TaskDataSource.insertTask(task)
+            setResult(Activity.RESULT_OK)
             finish()
             
 
         }
+    }
+
+    companion object{
+        const val TASK_ID = "task_id"
     }
 }
